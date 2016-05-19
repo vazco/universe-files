@@ -1,5 +1,5 @@
-import {webapp} from 'meteor/webapp';
-import {ejson} from 'meteor/ejson';
+import {WebApp} from 'meteor/webapp';
+import {EJSON} from 'meteor/ejson';
 import {UniConfig} from 'meteor/universe:utilities';
 import {UniUsers} from 'meteor/universe:collection';
 import path from 'path';
@@ -111,11 +111,10 @@ WebApp.connectHandlers.use(UPLOADING_URL, function (req, res) {
                 }
             });
             return;
-        } else {
-            if (FilesCollection.validateUniverseRule('upload', null, req.query, req)) {
-                upload.parse(req);
-                return;
-            }
+        }
+        if (FilesCollection.validateUniverseRule('upload', null, req.query, req)) {
+            upload.parse(req);
+            return;
         }
         const er = new Meteor.Error('403', 'Uploading is denied for you.');
         console.error('uploading file', er);

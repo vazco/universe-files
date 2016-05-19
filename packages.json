@@ -1,0 +1,19 @@
+{
+  "name": "meteor-universe-files",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint .",
+    "spacejam": "spacejam test-packages ./"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^2.x",
+    "eslint-config-vazco": "^1.x",
+    "babel-eslint": "^6.x",
+    "eslint-plugin-babel": "^3.x",
+    "eslint-plugin-react": "^5.x",
+    "spacejam": "^1.x"
+  }
+}

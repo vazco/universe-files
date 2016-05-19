@@ -1,0 +1,10 @@
+{
+  "env": {
+    "meteor": true
+  },
+  "extends": "vazco",
+  "rules": {
+    "no-bitwise": 0,
+    "func-names" : 0
+  }
+}

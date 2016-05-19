@@ -1,5 +1,5 @@
-import {UniCollection} from 'meteor/universe:collection';
-import {UniUtils} from 'meteor/universe:utilities';
+import {UniCollection, UniUsers} from 'meteor/universe:collection';
+import {UniConfig} from 'meteor/universe:utilities';
 
 const files = new UniCollection('universeFiles');
 files.STATUS_START = 'start';
@@ -15,7 +15,7 @@ files.getFullFileUrl = pathInStore => {
     if (/\/$/.test(UPLOADS_URL)) {
         return UPLOADS_URL + pathInStore;
     }
-    return UPLOADS_URL + '/' + pathInStore
+    return UPLOADS_URL + '/' + pathInStore;
 };
 
 files.getFullImageUrl = (pathInStore, size = '') => {
@@ -32,7 +32,7 @@ files.getUploadingUrl = (isImage = false) => {
     const userId = UniUsers.getLoggedInId();
     const queries = [];
     let fileToken;
-    if (userId){
+    if (userId) {
         queries.push('user='+userId);
         fileToken = UniConfig.users.get('fileToken');
         if (!fileToken && UniConfig.ready()) {

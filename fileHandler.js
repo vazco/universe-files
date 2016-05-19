@@ -1,14 +1,14 @@
-import {webapp} from 'meteor/webapp';
+import {WebApp} from 'meteor/webapp';
 import path from 'path';
 import fs from 'fs';
 import contentTypes from 'uploadfs/lib/storage/contentTypes';
 import {UPLOADS_URL, UPLOADS_PATH} from './constants';
 
 if (UPLOADS_URL) {
-    WebApp.connectHandlers.use(UPLOADS_URL, function(req, res, next) {
+    WebApp.connectHandlers.use(UPLOADS_URL, function (req, res, next) {
         const url = (req.url || '').replace(/\?.*$/, '');
         const localPath = path.join(UPLOADS_PATH, url.replace(/\.\.|~|^\\+|^\/+/g, ''));
-        if(!fs.existsSync(localPath)){
+        if (!fs.existsSync(localPath)) {
             return next();
         }
         const stat = fs.statSync(localPath);

@@ -46,7 +46,7 @@ UniConfig.public.set('universe:files', {
     MAX_FILE_SIZE_KB
 }, true);
 
-FilesCollection.onAfterCall('remove', 'removeFiles', function() {
+FilesCollection.onAfterCall('remove', 'removeFiles', function () {
     this.getPreviousDocs().forEach(doc => doc.status === FilesCollection.STATUS_DONE && ufs.remove(doc.path));
 });
 
