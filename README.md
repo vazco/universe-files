@@ -9,6 +9,12 @@ Additionally:
 
 Everything works on top of [uploadfs](https://github.com/punkave/uploadfs) package, so you can easily implement more features.
 
+## Installation
+
+```sh
+    $ meteor add universe:files
+```
+
 ## Storing files
 As a default option this package stores files locally.
 Because of that this package is auto configured,
