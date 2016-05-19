@@ -12,8 +12,8 @@ Package.describe({
 
 Package.onUse(function (api) {
     api.versionsFrom('1.3.2.4');
-    api.use(['ecmascript', 'cristo:auto-install-npm', 'webapp',
-        'universe:collection', 'random', 'ejson', 'universe:utilities']);
+    api.use(['ecmascript', 'cristo:auto-install-npm@0.0.5', 'webapp',
+        'universe:collection@2.3.7', 'random', 'ejson', 'universe:utilities@2.3.2']);
     api.addFiles(['autoInstall.js', 'uploadAction.js', 'files.js', 'fileHandler.js'], 'server');
     api.mainModule('index.js');
 });
