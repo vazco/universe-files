@@ -82,7 +82,7 @@ WebApp.connectHandlers.use(UPLOADING_URL, function (req, res) {
                 FilesCollection.update(file._id, {
                     $set: doneData
                 });
-                result[fileKey] = {_id: file._id, path: file.path};
+                result[fileKey] = {_id: file._id, path: file.path, orgName: file.orgName};
             } catch (err) {
                 setError(err);
             }
