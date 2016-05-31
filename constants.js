@@ -18,7 +18,7 @@ const {
 
 } = (Meteor.settings || {})['universe:files'] || {};
 const isS3 = s3.region && s3.secret && s3.bucket && s3.key;
-export const METEOR_ROOT_PATH = process.cwd().split('/build/')[0];
+export const METEOR_ROOT_PATH = process.cwd().split(/\/build\/|\/app\//)[0];
 export const UPLOADS_PATH = uploadsPath || path.join(METEOR_ROOT_PATH, 'uploads');
 export const TEMP_PATH = tempPath || path.join(os.tmpdir(), 'universe');
 export const UPLOADS_URL = uploadsUrl || (!isS3 ? '/uploads' : undefined);
