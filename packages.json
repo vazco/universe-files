@@ -1,7 +1,7 @@
 {
   "name": "meteor-universe-files",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "test": "npm run lint",
     "lint": "eslint .",
