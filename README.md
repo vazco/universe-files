@@ -171,4 +171,4 @@ import FileCollection from 'meteor/universe:files';
 FileCollection.getFullImageUrl('file/abdf533f67.jpg', 'small);
 //output (if s3): http://test.s3.amazonaws.com/file/abdf533f67.small.jpg
 ```
-License (MIT)
+##  License MIT
