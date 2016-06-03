@@ -1,3 +1,5 @@
+<a href="http://unicms.io"><img src="http://unicms.io/banners/standalone.png" /></a>
+
 # Universe files
 This package aims make file uploading easy by less configuration requirement but still be configurable.
 Universe Files package includes both S3-based and local filesystem-based backend.
