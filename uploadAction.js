@@ -13,10 +13,12 @@ const createDoc = Meteor.bindEnvironment(file => FilesCollection.insert(file));
 
 const copyToStore = Meteor.wrapAsync(UploadService.copyIn);
 const copyImageIn = Meteor.wrapAsync(UploadService.copyImageIn);
+const identifyLocalImage = Meteor.wrapAsync(UploadService.identifyLocalImage);
 
 WebApp.connectHandlers.use(UPLOADING_URL, function (req, res) {
     const ids = [];
     let userId;
+    const isImage = req.query && req.query.image;
     const upload = new Upload({
         dest: TEMP_PATH,
         maxFileSize: MAX_FILE_SIZE_KB * 1024,
@@ -42,7 +44,6 @@ WebApp.connectHandlers.use(UPLOADING_URL, function (req, res) {
     upload.on('end', Meteor.bindEnvironment(function (fields, files) {
         const fileNames = Object.keys(files);
         const result = {};
-        const isImage = req.query && req.query.image;
         fileNames.forEach(fileKey => {
             const file = files[fileKey];
             const setError = (err, details = '') => {
@@ -74,6 +75,13 @@ WebApp.connectHandlers.use(UPLOADING_URL, function (req, res) {
                     setError(new Error('Missing temporary file'), tmpPath);
                 }
                 if (isImage) {
+                    const imInfo = identifyLocalImage(tmpPath);
+                    if (imInfo && imInfo.extension) {
+                        const newExt = '.' + imInfo.extension;
+                        doneData['filename'] = file._id + newExt;
+                        file.path = file.path.replace(new RegExp('\.'+file.extension+'$'), newExt);
+                        file.extension = newExt;
+                    }
                     doneData.imageInfo = copyImageIn(tmpPath, '/' + file.path);
                     doneData.imageSizes = IMAGE_SIZES;
                 } else {

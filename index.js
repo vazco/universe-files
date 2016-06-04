@@ -25,7 +25,7 @@ files.getFullImageUrl = (pathInStore, size = '') => {
             pathInStore = paths[1] + '.' + size + paths[2];
         }
     }
-    return files.getFileUrl(pathInStore);
+    return files.getFullFileUrl(pathInStore);
 };
 
 files.getUploadingUrl = (isImage = false) => {
