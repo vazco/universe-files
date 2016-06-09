@@ -59,7 +59,7 @@ if (BACKEND === 's3') {
     console.info('UPLOADS_PATH', UPLOADS_PATH);
 }
 
-function ensureDir (path, mode = '0744') {
+function ensureDir (path, mode = '0766') {
     fs.stat(path, function (err) {
         if (err) {
             // Create the temp directory
