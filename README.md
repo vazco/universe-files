@@ -173,4 +173,13 @@ import FileCollection from 'meteor/universe:files';
 FileCollection.getFullImageUrl('file/abdf533f67.jpg', 'small);
 //output (if s3): http://test.s3.amazonaws.com/file/abdf533f67.small.jpg
 ```
+
+## Removing files
+To remove a file you need just remove document from file collection
+```
+import FileCollection from 'meteor/universe:files';
+
+FileCollection.remove(idOrSelector);
+```
+
 ##  License MIT
