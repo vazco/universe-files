@@ -49,12 +49,7 @@ export const IMAGE_SIZES = imageSizes || [
     }
 ];
 
-Meteor.defer(() => {
-    ensureDir(UPLOADS_PATH);
-    if (TEMP_PATH !== tmpDir) {
-        ensureDir(TEMP_PATH);
-    }
-});
+Meteor.defer(() => ensureDir(UPLOADS_PATH));
 
 // Info level log
 console.info('TEMP_PATH', TEMP_PATH);
