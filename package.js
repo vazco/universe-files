@@ -1,6 +1,6 @@
 Package.describe({
     name: 'universe:files',
-    version: '1.0.5',
+    version: '1.0.6',
     // Brief, one-line summary of the package.
     summary: 'Easy file uploading feature for meteor with local file system and amazon s3 support',
     // URL to the Git repository containing the source code for this package.

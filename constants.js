@@ -17,10 +17,11 @@ const {
     imageSizes
 
 } = (Meteor.settings || {})['universe:files'] || {};
+const tmpDir = os.tmpdir();
 const isS3 = s3.region && s3.secret && s3.bucket && s3.key;
 export const METEOR_ROOT_PATH = process.cwd().split(/\/build\/|\/app\//)[0];
 export const UPLOADS_PATH = uploadsPath || path.join(METEOR_ROOT_PATH, 'uploads');
-export const TEMP_PATH = tempPath || os.tmpdir();
+export const TEMP_PATH = tempPath || tmpDir;
 export const UPLOADS_URL = uploadsUrl || (!isS3 ? '/uploads' : undefined);
 export const UPLOADING_URL = uploadingUrl || '/uploading';
 export const ACCEPT_FILE_TYPES = acceptFileTypes || 'gif|jpe?g|png|pdf|doc?x|zip|rar|pages|abw|odt|ps|txt|md';
@@ -50,7 +51,9 @@ export const IMAGE_SIZES = imageSizes || [
 
 Meteor.defer(() => {
     ensureDir(UPLOADS_PATH);
-    ensureDir(TEMP_PATH);
+    if (TEMP_PATH !== tmpDir) {
+        ensureDir(TEMP_PATH);
+    }
 });
 
 // Info level log
