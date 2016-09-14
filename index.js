@@ -1,11 +1,14 @@
 import {UniCollection, UniUsers} from 'meteor/universe:collection';
-import {UniConfig} from 'meteor/universe:utilities';
+import {UniConfig, UniUtils} from 'meteor/universe:utilities';
+import {Meteor} from 'meteor/meteor';
 
 const files = new UniCollection('universeFiles');
 files.STATUS_START = 'start';
 files.STATUS_DONE = 'done';
 files.STATUS_PROCESSING = 'processing';
 files.STATUS_ERROR = 'error';
+
+const httpRegx = /https?:\/\//;
 
 let confUF;
 
@@ -15,7 +18,14 @@ files.getFullFileUrl = pathInStore => {
     if (/\/$/.test(UPLOADS_URL)) {
         return UPLOADS_URL + pathInStore;
     }
-    return UPLOADS_URL + '/' + pathInStore;
+    let url = UPLOADS_URL + '/' + pathInStore;
+    if (httpRegx.test(url)) {
+        return url;
+    }
+    if (url[0] === '/'){
+        url = url.substr(1);
+    }
+    return Meteor.absoluteUrl(url);
 };
 
 files.getFullImageUrl = (pathInStore, size = '') => {
@@ -48,7 +58,14 @@ files.getUploadingUrl = (isImage = false) => {
     if (isImage) {
         queries.push('image=1');
     }
-    return UPLOADING_URL + (queries.length ? '?' + queries.join('&') : '');
+    let url = UPLOADING_URL + (queries.length ? '?' + queries.join('&') : '');
+    if (httpRegx.test(url)) {
+        return url;
+    }
+    if (url[0] === '/'){
+        url = url.substr(1);
+    }
+    return Meteor.absoluteUrl(url);
 };
 
 files.addNewAllowDenyValidatorType('upload');
