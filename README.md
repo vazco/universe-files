@@ -1,4 +1,4 @@
-<a href="http://unicms.io"><img src="http://unicms.io/banners/standalone.png" /></a>
+## Abandonware
 
 # Universe files
 This package aims make file uploading easy by less configuration requirement but still be configurable.
