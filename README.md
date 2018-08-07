@@ -1,6 +1,15 @@
-## Abandonware
+<h1 align="center">
+    <a href="https://github.com/vazco">vazco</a>/Universe Files
+</h1>
 
-# Universe files
+&nbsp;
+
+<h3 align="center">
+  -- Abandonware. This package is deprecated! --
+</h3>
+
+&nbsp;
+
 This package aims make file uploading easy by less configuration requirement but still be configurable.
 Universe Files package includes both S3-based and local filesystem-based backend.
 
@@ -182,4 +191,8 @@ import FileCollection from 'meteor/universe:files';
 FileCollection.remove(idOrSelector);
 ```
 
-##  License MIT
+## License
+
+<img src="https://vazco.eu/banner.png" align="right">
+
+**Like every package maintained by [Vazco](https://vazco.eu/), Universe Files is [MIT licensed](https://github.com/vazco/uniforms/blob/master/LICENSE).**
